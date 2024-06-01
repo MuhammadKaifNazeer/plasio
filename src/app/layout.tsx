@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import Sidebar from "@/components/Sidebar/Sidebar";
+import Header from "@/components/Header/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +26,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <Sidebar />
+          <div className="lg:ml-[17rem]">
+            <div className=" ">{children}</div>
+          </div>
         </ThemeProvider>
       </body>
     </html>
