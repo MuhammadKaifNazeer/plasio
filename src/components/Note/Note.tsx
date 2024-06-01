@@ -39,7 +39,7 @@ import Searchbar from "../Searchbar/Searchbar";
 
 export default function Note() {
   return (
-    <div key="1" className="grid min-h-screen w-full max-w-screen">
+    <div className="grid min-h-screen w-full max-w-screen">
       <div className="flex flex-col">
         {/* <div className="w-100 h-[10rem] bg-primary rounded m-4"></div> */}
 
@@ -49,7 +49,7 @@ export default function Note() {
             <Searchbar />
           </div> */}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4 mt-[4rem]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4">
             <div className="w-full sm:hidden">
               <Searchbar />
             </div>

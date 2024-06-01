@@ -27,8 +27,7 @@ import {
 import { ThemeToggler } from "../ThemeToggler/ThemeToggler";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { Input } from "../ui/input";
-import Searchbar from "../Searchbar/Searchbar";
-import { useLocation } from "react-router-dom";
+import Searchbar from "../Searchbar/Searchbar"; 
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 
@@ -42,16 +41,6 @@ const links = [
     link: "/calendar",
     name: "Calendar",
     icon: <Calendar />,
-  },
-  {
-    link: "/folders",
-    name: "Folder",
-    icon: <Folder />,
-  },
-  {
-    link: "/tags",
-    name: "Tags",
-    icon: <Tag />,
   },
   {
     link: "/trash",
@@ -94,7 +83,7 @@ const Sidebar = () => {
             <Searchbar />
           </div>
           <div className="flex-1 justify-end flex gap-2">
-            <Link href={"#"} className="lg:hidden">
+            <Link href={"/createnote"} className="lg:hidden">
               <Button className="">
                 Add Note
                 <Plus className="ml-1 h-4 w-4" />
@@ -146,7 +135,7 @@ const Sidebar = () => {
                   </Button>
                 </Link>
               ))}
-              <Link href={"#"} className="hidden lg:block">
+              <Link href={"/createnote"} className="hidden lg:block">
                 <Button className="w-full mt-2">
                   Add Note
                   <Plus className="ml-1 h-4 w-4" />

@@ -27,7 +27,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Sidebar />
-          <div className="lg:ml-[17rem]">
+          <div className="lg:pl-[17rem] pt-[4rem]">
             <div className=" ">{children}</div>
           </div>
         </ThemeProvider>
