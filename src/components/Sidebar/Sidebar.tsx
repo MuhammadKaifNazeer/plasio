@@ -94,7 +94,7 @@ const Sidebar = () => {
             <Searchbar />
           </div>
           <div className="flex-1 justify-end flex gap-2">
-            <Link href={"#"}>
+            <Link href={"#"} className="lg:hidden">
               <Button className="">
                 Add Note
                 <Plus className="ml-1 h-4 w-4" />
@@ -146,6 +146,12 @@ const Sidebar = () => {
                   </Button>
                 </Link>
               ))}
+              <Link href={"#"} className="hidden lg:block">
+                <Button className="w-full mt-2">
+                  Add Note
+                  <Plus className="ml-1 h-4 w-4" />
+                </Button>
+              </Link>
             </nav>
           </div>
           <div className="mt-auto p-4">
