@@ -2,32 +2,12 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-} from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { Toggle } from "@/components/ui/toggle";
-import {
-  Bolt,
-  Calendar,
-  FlipVertical,
-  Folder,
-  Home,
-  Moon,
-  Notebook,
-  Plus,
-  Search,
-  Settings,
-  Tag,
-  Trash,
-} from "lucide-react";
+import { Home, Notebook, Plus, Settings, Trash2 } from "lucide-react";
 import { ThemeToggler } from "../ThemeToggler/ThemeToggler";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { Input } from "../ui/input";
-import Searchbar from "../Searchbar/Searchbar"; 
+import Searchbar from "../Searchbar/Searchbar";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 
@@ -40,7 +20,7 @@ const links = [
   {
     link: "/trash",
     name: "Trash",
-    icon: <Trash />,
+    icon: <Trash2 />,
   },
   {
     link: "/settings",
@@ -66,7 +46,7 @@ const Sidebar = () => {
             <div className="flex items-center justify-between">
               <Link
                 className="flex items-center gap-2 font-semibold"
-                href="#"
+                href="/"
                 prefetch={false}
               >
                 <Notebook className="h-6 w-6 text-primary" />
@@ -106,7 +86,7 @@ const Sidebar = () => {
           <div className="flex lg:h-[60px] h-[56px] items-center justify-between border-b px-6">
             <Link
               className="flex items-center gap-2 font-semibold"
-              href="#"
+              href="/"
               prefetch={false}
             >
               <Notebook className="h-6 w-6 text-primary" />
