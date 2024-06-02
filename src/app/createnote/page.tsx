@@ -1,10 +1,10 @@
-import Note from "@/components/Note/Note";
 import React from "react";
+import CreateNoteForm from "@/components/CreateNoteForm/CreateNoteForm";
 
 const CreateNote = () => {
   return (
     <>
-      <div className="px-4">Create Note</div>
+      <CreateNoteForm />
     </>
   );
 };
