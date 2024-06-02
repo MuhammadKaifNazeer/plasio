@@ -38,11 +38,6 @@ const links = [
     icon: <Home />,
   },
   {
-    link: "/calendar",
-    name: "Calendar",
-    icon: <Calendar />,
-  },
-  {
     link: "/trash",
     name: "Trash",
     icon: <Trash />,
