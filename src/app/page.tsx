@@ -1,11 +1,11 @@
-import Note from "@/components/Note/Note";
+import Notes from "@/components/Notes/Notes";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <>
-      <Note />
+      <Notes />
     </>
   );
 }

@@ -15,7 +15,7 @@ export default function MainLayout({ children }: AppProps) {
       <body>
         <ScrollArea className="h-screen">
           {showSidebar && <Sidebar />}
-          <div
+          <div 
             className={showSidebar ? "lg:pl-[17rem] pt-[4rem]" : "no-padding"}
           >
             {children}
