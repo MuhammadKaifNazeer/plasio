@@ -1,4 +1,3 @@
-import Note from "@/components/Note/Note";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
