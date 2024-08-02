@@ -50,7 +50,7 @@ const Sidebar = () => {
                 prefetch={false}
               >
                 <Notebook className="h-6 w-6 text-primary" />
-                <span className="font-bold text-xl">Notepen</span>
+                <span className="font-bold text-xl">Plasio</span>
               </Link>
             </div>
           </div>
@@ -90,7 +90,7 @@ const Sidebar = () => {
               prefetch={false}
             >
               <Notebook className="h-6 w-6 text-primary" />
-              <span className="font-bold">Notepen</span>
+              <span className="font-bold">Plasio</span>
             </Link>
           </div>
           <div className="flex-1 overflow-auto py-2">
