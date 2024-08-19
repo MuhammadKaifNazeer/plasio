@@ -1,8 +1,10 @@
 "use client";
 
+import React, { useState, FormEvent } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import LoaderButton from "@/components/LoaderButton/LoaderButton";
 
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -12,16 +14,47 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useState } from "react";
 
+// Define the SignupForm component
 export function SignupForm() {
-  const [name, setName] = useState("");
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  // State variables
+  const [loading, setLoading] = useState<boolean>(false);
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string>("");
 
-  console.log(name, username, email, password);
+  // Initialize router
+  const router = useRouter();
+
+  // Handle form submission
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setLoading(true);
+
+    try {
+      const response = await fetch("/api/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, password }),
+      });
+      const data = await response.json();
+
+      if (response.status === 201) {
+        // Redirect to homepage on successful signup
+        console.log(data.message);
+        router.push("/"); // Use router to navigate to the homepage
+      } else {
+        setError(data.message);
+        setLoading(false);
+      }
+    } catch (error) {
+      setError("An unexpected error occurred");
+      setLoading(false);
+    }
+  };
 
   return (
     <Card className="mx-auto max-w-sm">
@@ -32,7 +65,7 @@ export function SignupForm() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="grid gap-4">
+        <form onSubmit={handleSubmit} method="POST" className="grid gap-4">
           <div className="grid gap-2">
             <Label htmlFor="name">Name</Label>
             <Input
@@ -40,16 +73,6 @@ export function SignupForm() {
               placeholder="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              required
-            />
-          </div>
-          <div className="grid gap-2">
-            <Label htmlFor="username">Username</Label>
-            <Input
-              id="username"
-              placeholder="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
               required
             />
           </div>
@@ -71,17 +94,16 @@ export function SignupForm() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </div>
-          <Button type="submit" className="w-full">
-            Create an account
-          </Button>
+          <LoaderButton loading={loading}>Register</LoaderButton>
           {error && (
             <div className="error border rounded px-2 py-1 w-max text-red-500">
               {error}
             </div>
           )}
-        </div>
+        </form>
         <div className="mt-4 text-center text-sm">
           Already have an account?{" "}
           <Link href="/login" className="underline">

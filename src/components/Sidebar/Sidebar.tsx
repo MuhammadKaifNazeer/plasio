@@ -4,12 +4,13 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Home, Notebook, Plus, Settings, Trash2 } from "lucide-react";
-import { ThemeToggler } from "../ThemeToggler/ThemeToggler";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { Input } from "../ui/input";
 import Searchbar from "../Searchbar/Searchbar";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
+
+import UserInfo from "@/components/UserInfo/UserInfo";
 
 const links = [
   {
@@ -120,26 +121,7 @@ const Sidebar = () => {
           </div>
           <div className="mt-auto p-4">
             <div className="grid gap-4">
-              <div className="flex items-center gap-4">
-                {/* <img
-                  alt="Avatar"
-                  className="rounded-full"
-                  height="40"
-                  src="/placeholder.svg"
-                  style={{ aspectRatio: "40/40", objectFit: "cover" }}
-                  width="40"
-                /> */}
-                <div className="w-10 h-10 rounded-full bg-primary"></div>
-                <div className="space-y-1">
-                  <p className="text-sm font-medium">John Doe</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
-                    john@example.com
-                  </p>
-                </div>
-                <div className="ml-auto">
-                  <ThemeToggler />
-                </div>
-              </div>
+              <UserInfo />
             </div>
           </div>
         </div>
