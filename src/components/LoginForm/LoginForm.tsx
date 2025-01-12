@@ -2,7 +2,6 @@
 
 import React, { useState, FormEvent } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import LoaderButton from "@/components/LoaderButton/LoaderButton";
 
 import {
@@ -23,36 +22,6 @@ export function LoginForm() {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
-  // Initialize router
-  const router = useRouter();
-
-  // Handle form submission
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setLoading(true);
-
-    try {
-      const response = await fetch("/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to login");
-      }
-
-      const data = await response.json();
-      localStorage.setItem("token", data.token);
-      router.push("/"); // Use router to navigate to the homepage
-    } catch (error) {
-      setError("Invalid email or password");
-      setLoading(false);
-    }
-  };
-
   return (
     <Card className="mx-auto max-w-sm">
       <CardHeader>
@@ -62,7 +31,7 @@ export function LoginForm() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="grid gap-4">
+        <form className="grid gap-4">
           <div className="grid gap-2">
             <Label htmlFor="email">Email</Label>
             <Input

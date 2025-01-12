@@ -25,60 +25,6 @@ const UserInfo: React.FC = () => {
   const [user, setUser] = useState<User | null>(null); // State can be User or null
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState(true); // Loading state
-  const router = useRouter();
-
-  useEffect(() => {
-    const fetchUserData = async () => {
-      setLoading(true);
-      try {
-        const response = await fetch("/api/profile", {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch user data");
-        }
-
-        const data: User = await response.json();
-        setUser(data);
-        console.log(data);
-      } catch (error) {
-        setError("Error fetching user data");
-        console.log("Error fetching user data: ", error);
-        // Optionally redirect if there's an error
-        // router.push("/login");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchUserData();
-  }, []);
-
-  const handleLogout = async () => {
-    setLoggingOut(true);
-    try {
-      const res = await fetch("/api/logout", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      });
-
-      if (res.status === 200) {
-        router.push("/login"); // Redirect to login after logout
-      } else {
-        setError("Failed to log out");
-      }
-    } catch (error) {
-      setError("An unexpected error occurred");
-    } finally {
-      setLoggingOut(false);
-    }
-  };
 
   return (
     <div className="flex items-center gap-4">
@@ -114,7 +60,7 @@ const UserInfo: React.FC = () => {
                 <Button type="submit" variant={"outline"}>
                   Cancel
                 </Button>
-                <LoaderButton loading={loggingOut} onClick={handleLogout}>
+                <LoaderButton loading={loggingOut}>
                   Logout
                 </LoaderButton>
               </DialogFooter>

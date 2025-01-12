@@ -2,7 +2,6 @@
 
 import React, { useState, FormEvent } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import LoaderButton from "@/components/LoaderButton/LoaderButton";
 
 import {
@@ -24,38 +23,6 @@ export function SignupForm() {
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
 
-  // Initialize router
-  const router = useRouter();
-
-  // Handle form submission
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setLoading(true);
-
-    try {
-      const response = await fetch("/api/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name, email, password }),
-      });
-      const data = await response.json();
-
-      if (response.status === 201) {
-        // Redirect to homepage on successful signup
-        console.log(data.message);
-        router.push("/"); // Use router to navigate to the homepage
-      } else {
-        setError(data.message);
-        setLoading(false);
-      }
-    } catch (error) {
-      setError("An unexpected error occurred");
-      setLoading(false);
-    }
-  };
-
   return (
     <Card className="mx-auto max-w-sm">
       <CardHeader>
@@ -65,7 +32,7 @@ export function SignupForm() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} method="POST" className="grid gap-4">
+        <form className="grid gap-4">
           <div className="grid gap-2">
             <Label htmlFor="name">Name</Label>
             <Input

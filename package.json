@@ -1,5 +1,5 @@
 {
-  "name": "Plasio",
+  "name": "plasio",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -18,15 +18,11 @@
     "@radix-ui/react-separator": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-toggle": "^1.0.3",
-    "bcryptjs": "^2.4.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "cookie-parser": "^1.4.6",
     "date-fns": "^3.6.0",
-    "jose": "^5.6.3",
-    "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.381.0",
-    "mongoose": "^8.5.2",
+    "mongoose": "^8.9.4",
     "next": "14.2.3",
     "next-connect": "^1.0.0",
     "next-themes": "^0.3.0",
