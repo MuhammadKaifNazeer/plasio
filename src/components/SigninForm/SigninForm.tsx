@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 // Define the LoginForm component
-export function LoginForm() {
+export function SigninForm() {
   // State variables
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
